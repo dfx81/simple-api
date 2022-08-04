@@ -6,7 +6,7 @@ import api
 import api.routes
 
 # Initialize commandline arguments
-if len(sys.argv) <= 5 or not (sys.argv[3].isdigit() and sys.argv[6].isdigit()):
+if len(sys.argv) < 7 or not (sys.argv[3].isdigit() and sys.argv[6].isdigit()):
     print("Usage: python server.py [HOST] [ADDRESS] [PORT] [YT-API-KEY] [DEFAULT-PLAYLIST-ID] [UPTIMER]")
     sys.exit(-1)
 
