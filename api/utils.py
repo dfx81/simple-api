@@ -6,6 +6,7 @@ def generate_list(body):
     if body == None:
         return []
     
+    vid_list = [ vid["contentDetails"]["videoId"] for vid in body["items"] ]
     return vid_list
 
 def generate_link(id):
@@ -17,6 +18,8 @@ def send_request(url):
 
     if res != None:
         return res.json()
+    else:
+        return { "items": [] }
 
 def get_vid_list(id):
     return generate_list(send_request(f"https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId={ id }&key={ api.api_key }"))

@@ -6,7 +6,6 @@ roulette = Blueprint("roulette", __name__)
 
 @roulette.route("/")
 def redirect():
-	print(f"Playlist: { api.vid_list }")
 	res = flask.Response()
 
 	res.status_code = 302
@@ -18,7 +17,6 @@ def redirect():
 @roulette.route("/<string:id>")
 def custom_redirect(id):
 	playlist = api.get_vid_list(id)
-	print(f"Playlist: { playlist }")
 
 	res = flask.Response()
 
