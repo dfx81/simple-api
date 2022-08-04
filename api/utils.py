@@ -14,10 +14,10 @@ def generate_link(id):
     return link
 
 def send_request(url):
+    print(api.api_key)
     res = requests.get(url)
 
     if res != None:
-        print(res.content)
         return res.json()
 
 def get_vid_list(id):
