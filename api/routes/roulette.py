@@ -1,4 +1,3 @@
-import random
 import flask
 from flask import Blueprint
 import api
@@ -6,21 +5,23 @@ import api
 roulette = Blueprint("roulette", __name__)
 
 @roulette.route("/")
-def redirect(tag):
+def redirect():
 	res = flask.Response()
 
-	res.status_code = 301
-	res.location = api.generate_link(random.randint(0, len(api.vid_list)))
+	res.status_code = 302
+	link = api.get_random_vid(api.vid_list)
+	res.location = link
 	
 	return res
 
 @roulette.route("/<string:id>")
 def custom_redirect(id):
-	playlist = api.generate_list(api.send_request(f"https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId={ id }&key={ api.api_key }"))
+	playlist = api.get_vid_list(id)
 
 	res = flask.Response()
 
-	res.status_code = 301
-	res.location = api.generate_link(random.randint(0, len(playlist)))
+	res.status_code = 302
+	link = api.get_random_vid(playlist)
+	res.location = link
 	
 	return res

@@ -6,17 +6,19 @@ index = Blueprint("index", __name__)
 @index.route("/")
 def help():
 	message = (
-		"# Simple API created by dfx\n"
-		"\n  "
-		"## Endpoints\n"
-		"- [GET] / : View this page  \n"
-		"- [GET] /ping : Ping the API  \n"
-		"- [GET] /link : Get list of links to dfx's socials  \n"
-		"- [GET] /roulette : Get a random Vocaloid/UTAU song curated by dfx  \n"
-		"- [GET] /roulette/<playlist-id> : Create your own roulette  \n"
-		"- [GET] /list/roulette/<playlist-id> : Get list of items in playlist  \n"
-		"\n  "
-		"\n(C) 2022, QLYCO / dfx"
+		"<h1>Simple API created by dfx</h1>"
+		"<h2>Endpoints</h2>"
+		"<ul>"
+		"<li><b>[GET]</b> <code>/</code> : View this page</li>"
+		"<li><b>[GET]</b> <code>/ping</code> : Ping the API</li>"
+		"<li><b>[GET]</b> <code>/link</code> : Get list of links to dfx's socials</li>"
+		"<li><b>[GET]</b> <code>/roulette</code> : Get a random Vocaloid/UTAU song curated by dfx</li>"
+		"<li><b>[GET]</b> <code>/roulette/&lt;playlist-id&gt;</code> : Create your own roulette</li>"
+		"<li><b>[GET]</b> <code>/list/&lt;playlist-id&gt;</code> : Get list of items in playlist</li>"
+		"</ul>"
+		"<small>&copy; 2022, QLYCO / dfx</small>"
 	)
 
 	res = flask.Response(message)
+	
+	return res

@@ -1,4 +1,5 @@
 import requests
+import random
 import api
 
 def generate_list(body):
@@ -20,4 +21,10 @@ def send_request(url):
     else:
         return None
 
-vid_list = generate_list(send_request(f"https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId={ api.playlist_id }&key={ api.api_key }"))
+def get_vid_list(id):
+    return generate_list(send_request(f"https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId={ id }&key={ api.api_key }"))
+
+def get_random_vid(playlist):
+    return generate_link(playlist[random.randint(0, len(playlist) - 1)])
+
+vid_list = []
