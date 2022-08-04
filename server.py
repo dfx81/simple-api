@@ -1,6 +1,7 @@
 from multiprocessing import Process
 import time
 from flask import Flask
+from waitress import serve
 import sys
 import api
 import api.routes
@@ -45,4 +46,5 @@ if __name__ == "__main__":
     print("Starting monitoring process...")
     uptime_monitor.start()
     print("Starting web process...")
-    app.run(host=IP, port=PORT)
+    # app.run(host=IP, port=PORT)
+    serve(app, host=IP, port=PORT)
