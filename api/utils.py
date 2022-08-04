@@ -6,7 +6,6 @@ def generate_list(body):
     if body == None:
         return []
     
-    vid_list = [ vid["contentDetails"]["videoId"] for vid in body["items"] ]
     return vid_list
 
 def generate_link(id):
@@ -14,7 +13,6 @@ def generate_link(id):
     return link
 
 def send_request(url):
-    print(api.api_key)
     res = requests.get(url)
 
     if res != None:

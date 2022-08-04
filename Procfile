@@ -1,1 +1,1 @@
-web: python server.py $HOST $ADDRESS $PORT $API-KEY $PLAYLIST-ID $UPTIMER
+web: python server.py $HOST $ADDRESS $PORT $API_KEY $PLAYLIST_ID $UPTIMER

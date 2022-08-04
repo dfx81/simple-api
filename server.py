@@ -19,7 +19,6 @@ UPTIMER = int(sys.argv[6])
 api.api_key = sys.argv[4]
 api.playlist_id = sys.argv[5]
 api.vid_list = api.get_vid_list(api.playlist_id)
-print(f"Vids in list: { len(api.vid_list) }")
 
 # Initialize Flask app
 app = Flask(__name__)
