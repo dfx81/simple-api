@@ -16,10 +16,9 @@ def generate_link(id):
 def send_request(url):
     res = requests.get(url)
 
-    if res.status_code == 200:
+    if res != None:
+        print(res.content)
         return res.json()
-    else:
-        return None
 
 def get_vid_list(id):
     return generate_list(send_request(f"https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId={ id }&key={ api.api_key }"))
