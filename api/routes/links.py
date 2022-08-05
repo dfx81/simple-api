@@ -13,7 +13,10 @@ link_list = {
 
 @links.route("/")
 def respond():
-	return jsonify(link_list)
+	res = jsonify(link_list)
+	res.headers.add('Access-Control-Allow-Origin', '*')
+
+	return res
 
 @links.route("/<string:tag>")
 def redirect(tag):
@@ -26,4 +29,6 @@ def redirect(tag):
 		res.status_code = 404
 		res.response = "Link not found."
 	
+	res.access_control_allow_origin = "*"
+
 	return res

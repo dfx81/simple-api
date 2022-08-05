@@ -1,6 +1,7 @@
 from multiprocessing import Process
 import time
 from flask import Flask
+from flask_talisman import Talisman
 from waitress import serve
 import sys
 import api
@@ -23,11 +24,13 @@ api.vid_list = api.get_vid_list(api.playlist_id)
 # Initialize Flask app
 app = Flask(__name__)
 
-app.register_blueprint(api.routes.index, url_prefix="/api")
-app.register_blueprint(api.routes.links, url_prefix="/api/links")
-app.register_blueprint(api.routes.roulette, url_prefix="/api/roulette")
-app.register_blueprint(api.routes.listing, url_prefix="/api/list")
+app.register_blueprint(api.routes.index, url_prefix="/api/")
+app.register_blueprint(api.routes.links, url_prefix="/api/links/")
+app.register_blueprint(api.routes.roulette, url_prefix="/api/roulette/")
+app.register_blueprint(api.routes.listing, url_prefix="/api/list/")
 app.register_blueprint(api.routes.ping, url_prefix="/api/ping/")
+
+Talisman(app, content_security_policy=None)
 
 # Setup uptime monitoring job
 def monitor(timer):

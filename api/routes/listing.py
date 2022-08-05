@@ -9,7 +9,10 @@ def list_vid_id(id):
 
 	res = {
 		"status": 200,
-		"lists": [ api.generate_link(vid_id) for vid_id in playlist ]
+		"list": playlist
 	}
+
+	res = jsonify(res)
+	res.headers.add('Access-Control-Allow-Origin', '*')
 	
-	return jsonify(res)
+	return res

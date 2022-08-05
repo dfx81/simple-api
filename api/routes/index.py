@@ -20,5 +20,6 @@ def help():
 	)
 
 	res = flask.Response(message)
+	res.access_control_allow_origin = "*"
 	
 	return res

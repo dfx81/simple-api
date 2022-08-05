@@ -10,4 +10,7 @@ def pong():
         "status": 200
     }
 
-    return jsonify(res)
+    res = jsonify(res)
+    res.headers.add('Access-Control-Allow-Origin', '*')
+	
+    return res

@@ -8,6 +8,7 @@ roulette = Blueprint("roulette", __name__)
 def redirect():
 	res = flask.Response()
 
+	res.access_control_allow_origin = "*"
 	res.status_code = 302
 	link = api.get_random_vid(api.vid_list)
 	res.location = link
@@ -20,6 +21,7 @@ def custom_redirect(id):
 
 	res = flask.Response()
 
+	res.access_control_allow_origin = "*"
 	res.status_code = 302
 	link = api.get_random_vid(playlist)
 	res.location = link
